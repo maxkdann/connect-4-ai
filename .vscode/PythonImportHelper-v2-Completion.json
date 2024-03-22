@@ -1,0 +1,686 @@
+[
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "pygame",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pygame",
+        "description": "pygame",
+        "detail": "pygame",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "create_board",
+        "kind": 2,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "def create_board():\n\tboard = np.zeros((ROW_COUNT,COLUMN_COUNT))\n\treturn board\ndef drop_piece(board, row, col, piece):\n\tboard[row][col] = piece\ndef is_valid_location(board, col):\n\treturn board[ROW_COUNT-1][col] == 0\ndef get_next_open_row(board, col):\n\tfor r in range(ROW_COUNT):\n\t\tif board[r][col] == 0:",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "drop_piece",
+        "kind": 2,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "def drop_piece(board, row, col, piece):\n\tboard[row][col] = piece\ndef is_valid_location(board, col):\n\treturn board[ROW_COUNT-1][col] == 0\ndef get_next_open_row(board, col):\n\tfor r in range(ROW_COUNT):\n\t\tif board[r][col] == 0:\n\t\t\treturn r\ndef print_board(board):\n\tprint(np.flip(board, 0))",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "is_valid_location",
+        "kind": 2,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "def is_valid_location(board, col):\n\treturn board[ROW_COUNT-1][col] == 0\ndef get_next_open_row(board, col):\n\tfor r in range(ROW_COUNT):\n\t\tif board[r][col] == 0:\n\t\t\treturn r\ndef print_board(board):\n\tprint(np.flip(board, 0))\ndef winning_move(board, piece):\n\t# Check horizontal locations for win",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "get_next_open_row",
+        "kind": 2,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "def get_next_open_row(board, col):\n\tfor r in range(ROW_COUNT):\n\t\tif board[r][col] == 0:\n\t\t\treturn r\ndef print_board(board):\n\tprint(np.flip(board, 0))\ndef winning_move(board, piece):\n\t# Check horizontal locations for win\n\tfor c in range(COLUMN_COUNT-3):\n\t\tfor r in range(ROW_COUNT):",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "print_board",
+        "kind": 2,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "def print_board(board):\n\tprint(np.flip(board, 0))\ndef winning_move(board, piece):\n\t# Check horizontal locations for win\n\tfor c in range(COLUMN_COUNT-3):\n\t\tfor r in range(ROW_COUNT):\n\t\t\tif board[r][c] == piece and board[r][c+1] == piece and board[r][c+2] == piece and board[r][c+3] == piece:\n\t\t\t\treturn True\n\t# Check vertical locations for win\n\tfor c in range(COLUMN_COUNT):",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "winning_move",
+        "kind": 2,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "def winning_move(board, piece):\n\t# Check horizontal locations for win\n\tfor c in range(COLUMN_COUNT-3):\n\t\tfor r in range(ROW_COUNT):\n\t\t\tif board[r][c] == piece and board[r][c+1] == piece and board[r][c+2] == piece and board[r][c+3] == piece:\n\t\t\t\treturn True\n\t# Check vertical locations for win\n\tfor c in range(COLUMN_COUNT):\n\t\tfor r in range(ROW_COUNT-3):\n\t\t\tif board[r][c] == piece and board[r+1][c] == piece and board[r+2][c] == piece and board[r+3][c] == piece:",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "draw_board",
+        "kind": 2,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "def draw_board(board):\n\tfor c in range(COLUMN_COUNT):\n\t\tfor r in range(ROW_COUNT):\n\t\t\tpygame.draw.rect(screen, BLUE, (c*SQUARESIZE, r*SQUARESIZE+SQUARESIZE, SQUARESIZE, SQUARESIZE))\n\t\t\tpygame.draw.circle(screen, BLACK, (int(c*SQUARESIZE+SQUARESIZE/2), int(r*SQUARESIZE+SQUARESIZE+SQUARESIZE/2)), RADIUS)\n\tfor c in range(COLUMN_COUNT):\n\t\tfor r in range(ROW_COUNT):\t\t\n\t\t\tif board[r][c] == 1:\n\t\t\t\tpygame.draw.circle(screen, RED, (int(c*SQUARESIZE+SQUARESIZE/2), height-int(r*SQUARESIZE+SQUARESIZE/2)), RADIUS)\n\t\t\telif board[r][c] == 2: ",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "BLUE",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "BLUE = (0,0,255)\nBLACK = (0,0,0)\nRED = (255,0,0)\nYELLOW = (255,255,0)\nROW_COUNT = 6\nCOLUMN_COUNT = 7\ndef create_board():\n\tboard = np.zeros((ROW_COUNT,COLUMN_COUNT))\n\treturn board\ndef drop_piece(board, row, col, piece):",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "BLACK",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "BLACK = (0,0,0)\nRED = (255,0,0)\nYELLOW = (255,255,0)\nROW_COUNT = 6\nCOLUMN_COUNT = 7\ndef create_board():\n\tboard = np.zeros((ROW_COUNT,COLUMN_COUNT))\n\treturn board\ndef drop_piece(board, row, col, piece):\n\tboard[row][col] = piece",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "RED",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "RED = (255,0,0)\nYELLOW = (255,255,0)\nROW_COUNT = 6\nCOLUMN_COUNT = 7\ndef create_board():\n\tboard = np.zeros((ROW_COUNT,COLUMN_COUNT))\n\treturn board\ndef drop_piece(board, row, col, piece):\n\tboard[row][col] = piece\ndef is_valid_location(board, col):",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "YELLOW",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "YELLOW = (255,255,0)\nROW_COUNT = 6\nCOLUMN_COUNT = 7\ndef create_board():\n\tboard = np.zeros((ROW_COUNT,COLUMN_COUNT))\n\treturn board\ndef drop_piece(board, row, col, piece):\n\tboard[row][col] = piece\ndef is_valid_location(board, col):\n\treturn board[ROW_COUNT-1][col] == 0",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "ROW_COUNT",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "ROW_COUNT = 6\nCOLUMN_COUNT = 7\ndef create_board():\n\tboard = np.zeros((ROW_COUNT,COLUMN_COUNT))\n\treturn board\ndef drop_piece(board, row, col, piece):\n\tboard[row][col] = piece\ndef is_valid_location(board, col):\n\treturn board[ROW_COUNT-1][col] == 0\ndef get_next_open_row(board, col):",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "COLUMN_COUNT",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "COLUMN_COUNT = 7\ndef create_board():\n\tboard = np.zeros((ROW_COUNT,COLUMN_COUNT))\n\treturn board\ndef drop_piece(board, row, col, piece):\n\tboard[row][col] = piece\ndef is_valid_location(board, col):\n\treturn board[ROW_COUNT-1][col] == 0\ndef get_next_open_row(board, col):\n\tfor r in range(ROW_COUNT):",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "\tboard",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "\tboard = np.zeros((ROW_COUNT,COLUMN_COUNT))\n\treturn board\ndef drop_piece(board, row, col, piece):\n\tboard[row][col] = piece\ndef is_valid_location(board, col):\n\treturn board[ROW_COUNT-1][col] == 0\ndef get_next_open_row(board, col):\n\tfor r in range(ROW_COUNT):\n\t\tif board[r][col] == 0:\n\t\t\treturn r",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "\tboard[row][col]",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "\tboard[row][col] = piece\ndef is_valid_location(board, col):\n\treturn board[ROW_COUNT-1][col] == 0\ndef get_next_open_row(board, col):\n\tfor r in range(ROW_COUNT):\n\t\tif board[r][col] == 0:\n\t\t\treturn r\ndef print_board(board):\n\tprint(np.flip(board, 0))\ndef winning_move(board, piece):",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "board",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "board = create_board()\nprint_board(board)\ngame_over = False\nturn = 0\npygame.init()\nSQUARESIZE = 100\nwidth = COLUMN_COUNT * SQUARESIZE\nheight = (ROW_COUNT+1) * SQUARESIZE\nsize = (width, height)\nRADIUS = int(SQUARESIZE/2 - 5)",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "game_over",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "game_over = False\nturn = 0\npygame.init()\nSQUARESIZE = 100\nwidth = COLUMN_COUNT * SQUARESIZE\nheight = (ROW_COUNT+1) * SQUARESIZE\nsize = (width, height)\nRADIUS = int(SQUARESIZE/2 - 5)\nscreen = pygame.display.set_mode(size)\ndraw_board(board)",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "turn",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "turn = 0\npygame.init()\nSQUARESIZE = 100\nwidth = COLUMN_COUNT * SQUARESIZE\nheight = (ROW_COUNT+1) * SQUARESIZE\nsize = (width, height)\nRADIUS = int(SQUARESIZE/2 - 5)\nscreen = pygame.display.set_mode(size)\ndraw_board(board)\npygame.display.update()",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "SQUARESIZE",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "SQUARESIZE = 100\nwidth = COLUMN_COUNT * SQUARESIZE\nheight = (ROW_COUNT+1) * SQUARESIZE\nsize = (width, height)\nRADIUS = int(SQUARESIZE/2 - 5)\nscreen = pygame.display.set_mode(size)\ndraw_board(board)\npygame.display.update()\nmyfont = pygame.font.SysFont(\"monospace\", 75)\nwhile not game_over:",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "width",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "width = COLUMN_COUNT * SQUARESIZE\nheight = (ROW_COUNT+1) * SQUARESIZE\nsize = (width, height)\nRADIUS = int(SQUARESIZE/2 - 5)\nscreen = pygame.display.set_mode(size)\ndraw_board(board)\npygame.display.update()\nmyfont = pygame.font.SysFont(\"monospace\", 75)\nwhile not game_over:\n\tfor event in pygame.event.get():",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "height",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "height = (ROW_COUNT+1) * SQUARESIZE\nsize = (width, height)\nRADIUS = int(SQUARESIZE/2 - 5)\nscreen = pygame.display.set_mode(size)\ndraw_board(board)\npygame.display.update()\nmyfont = pygame.font.SysFont(\"monospace\", 75)\nwhile not game_over:\n\tfor event in pygame.event.get():\n\t\tif event.type == pygame.QUIT:",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "size",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "size = (width, height)\nRADIUS = int(SQUARESIZE/2 - 5)\nscreen = pygame.display.set_mode(size)\ndraw_board(board)\npygame.display.update()\nmyfont = pygame.font.SysFont(\"monospace\", 75)\nwhile not game_over:\n\tfor event in pygame.event.get():\n\t\tif event.type == pygame.QUIT:\n\t\t\tsys.exit()",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "RADIUS",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "RADIUS = int(SQUARESIZE/2 - 5)\nscreen = pygame.display.set_mode(size)\ndraw_board(board)\npygame.display.update()\nmyfont = pygame.font.SysFont(\"monospace\", 75)\nwhile not game_over:\n\tfor event in pygame.event.get():\n\t\tif event.type == pygame.QUIT:\n\t\t\tsys.exit()\n\t\tif event.type == pygame.MOUSEMOTION:",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "screen",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "screen = pygame.display.set_mode(size)\ndraw_board(board)\npygame.display.update()\nmyfont = pygame.font.SysFont(\"monospace\", 75)\nwhile not game_over:\n\tfor event in pygame.event.get():\n\t\tif event.type == pygame.QUIT:\n\t\t\tsys.exit()\n\t\tif event.type == pygame.MOUSEMOTION:\n\t\t\tpygame.draw.rect(screen, BLACK, (0,0, width, SQUARESIZE))",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "myfont",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "myfont = pygame.font.SysFont(\"monospace\", 75)\nwhile not game_over:\n\tfor event in pygame.event.get():\n\t\tif event.type == pygame.QUIT:\n\t\t\tsys.exit()\n\t\tif event.type == pygame.MOUSEMOTION:\n\t\t\tpygame.draw.rect(screen, BLACK, (0,0, width, SQUARESIZE))\n\t\t\tposx = event.pos[0]\n\t\t\tif turn == 0:\n\t\t\t\tpygame.draw.circle(screen, RED, (posx, int(SQUARESIZE/2)), RADIUS)",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tposx",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "\t\t\tposx = event.pos[0]\n\t\t\tif turn == 0:\n\t\t\t\tpygame.draw.circle(screen, RED, (posx, int(SQUARESIZE/2)), RADIUS)\n\t\t\telse: \n\t\t\t\tpygame.draw.circle(screen, YELLOW, (posx, int(SQUARESIZE/2)), RADIUS)\n\t\tpygame.display.update()\n\t\tif event.type == pygame.MOUSEBUTTONDOWN:\n\t\t\tpygame.draw.rect(screen, BLACK, (0,0, width, SQUARESIZE))\n\t\t\t#print(event.pos)\n\t\t\t# Ask for Player 1 Input",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tposx",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "\t\t\t\tposx = event.pos[0]\n\t\t\t\tcol = int(math.floor(posx/SQUARESIZE))\n\t\t\t\tif is_valid_location(board, col):\n\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 1)\n\t\t\t\t\tif winning_move(board, 1):\n\t\t\t\t\t\tlabel = myfont.render(\"Player 1 wins!!\", 1, RED)\n\t\t\t\t\t\tscreen.blit(label, (40,10))\n\t\t\t\t\t\tgame_over = True\n\t\t\t# # Ask for Player 2 Input",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tcol",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "\t\t\t\tcol = int(math.floor(posx/SQUARESIZE))\n\t\t\t\tif is_valid_location(board, col):\n\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 1)\n\t\t\t\t\tif winning_move(board, 1):\n\t\t\t\t\t\tlabel = myfont.render(\"Player 1 wins!!\", 1, RED)\n\t\t\t\t\t\tscreen.blit(label, (40,10))\n\t\t\t\t\t\tgame_over = True\n\t\t\t# # Ask for Player 2 Input\n\t\t\telse:\t\t\t\t",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\trow",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 1)\n\t\t\t\t\tif winning_move(board, 1):\n\t\t\t\t\t\tlabel = myfont.render(\"Player 1 wins!!\", 1, RED)\n\t\t\t\t\t\tscreen.blit(label, (40,10))\n\t\t\t\t\t\tgame_over = True\n\t\t\t# # Ask for Player 2 Input\n\t\t\telse:\t\t\t\t\n\t\t\t\tposx = event.pos[0]\n\t\t\t\tcol = int(math.floor(posx/SQUARESIZE))",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\tlabel",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "\t\t\t\t\t\tlabel = myfont.render(\"Player 1 wins!!\", 1, RED)\n\t\t\t\t\t\tscreen.blit(label, (40,10))\n\t\t\t\t\t\tgame_over = True\n\t\t\t# # Ask for Player 2 Input\n\t\t\telse:\t\t\t\t\n\t\t\t\tposx = event.pos[0]\n\t\t\t\tcol = int(math.floor(posx/SQUARESIZE))\n\t\t\t\tif is_valid_location(board, col):\n\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 2)",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\tgame_over",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "\t\t\t\t\t\tgame_over = True\n\t\t\t# # Ask for Player 2 Input\n\t\t\telse:\t\t\t\t\n\t\t\t\tposx = event.pos[0]\n\t\t\t\tcol = int(math.floor(posx/SQUARESIZE))\n\t\t\t\tif is_valid_location(board, col):\n\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 2)\n\t\t\t\t\tif winning_move(board, 2):\n\t\t\t\t\t\tlabel = myfont.render(\"Player 2 wins!!\", 1, YELLOW)",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tposx",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "\t\t\t\tposx = event.pos[0]\n\t\t\t\tcol = int(math.floor(posx/SQUARESIZE))\n\t\t\t\tif is_valid_location(board, col):\n\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 2)\n\t\t\t\t\tif winning_move(board, 2):\n\t\t\t\t\t\tlabel = myfont.render(\"Player 2 wins!!\", 1, YELLOW)\n\t\t\t\t\t\tscreen.blit(label, (40,10))\n\t\t\t\t\t\tgame_over = True\n\t\t\tprint_board(board)",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tcol",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "\t\t\t\tcol = int(math.floor(posx/SQUARESIZE))\n\t\t\t\tif is_valid_location(board, col):\n\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 2)\n\t\t\t\t\tif winning_move(board, 2):\n\t\t\t\t\t\tlabel = myfont.render(\"Player 2 wins!!\", 1, YELLOW)\n\t\t\t\t\t\tscreen.blit(label, (40,10))\n\t\t\t\t\t\tgame_over = True\n\t\t\tprint_board(board)\n\t\t\tdraw_board(board)",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\trow",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 2)\n\t\t\t\t\tif winning_move(board, 2):\n\t\t\t\t\t\tlabel = myfont.render(\"Player 2 wins!!\", 1, YELLOW)\n\t\t\t\t\t\tscreen.blit(label, (40,10))\n\t\t\t\t\t\tgame_over = True\n\t\t\tprint_board(board)\n\t\t\tdraw_board(board)\n\t\t\tturn += 1\n\t\t\tturn = turn % 2",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\tlabel",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "\t\t\t\t\t\tlabel = myfont.render(\"Player 2 wins!!\", 1, YELLOW)\n\t\t\t\t\t\tscreen.blit(label, (40,10))\n\t\t\t\t\t\tgame_over = True\n\t\t\tprint_board(board)\n\t\t\tdraw_board(board)\n\t\t\tturn += 1\n\t\t\tturn = turn % 2\n\t\t\tif game_over:\n\t\t\t\tpygame.time.wait(3000)",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\tgame_over",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "\t\t\t\t\t\tgame_over = True\n\t\t\tprint_board(board)\n\t\t\tdraw_board(board)\n\t\t\tturn += 1\n\t\t\tturn = turn % 2\n\t\t\tif game_over:\n\t\t\t\tpygame.time.wait(3000)",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tturn",
+        "kind": 5,
+        "importPath": "connect4",
+        "description": "connect4",
+        "peekOfCode": "\t\t\tturn = turn % 2\n\t\t\tif game_over:\n\t\t\t\tpygame.time.wait(3000)",
+        "detail": "connect4",
+        "documentation": {}
+    },
+    {
+        "label": "create_board",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def create_board():\n    board = np.zeros((ROW_COUNT, COLUMN_COUNT))\n    return board\ndef drop_piece(board, row, col, piece):\n    board[row][col] = piece\ndef is_valid_location(board, col):\n    return board[ROW_COUNT - 1][col] == 0\ndef get_next_open_row(board, col):\n    for r in range(ROW_COUNT):\n        if board[r][col] == 0:",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "drop_piece",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def drop_piece(board, row, col, piece):\n    board[row][col] = piece\ndef is_valid_location(board, col):\n    return board[ROW_COUNT - 1][col] == 0\ndef get_next_open_row(board, col):\n    for r in range(ROW_COUNT):\n        if board[r][col] == 0:\n            return r\ndef print_board(board):\n    print(np.flip(board, 0))",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "is_valid_location",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def is_valid_location(board, col):\n    return board[ROW_COUNT - 1][col] == 0\ndef get_next_open_row(board, col):\n    for r in range(ROW_COUNT):\n        if board[r][col] == 0:\n            return r\ndef print_board(board):\n    print(np.flip(board, 0))\ndef winning_move(board, piece):\n    # Check horizontal locations for win",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "get_next_open_row",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def get_next_open_row(board, col):\n    for r in range(ROW_COUNT):\n        if board[r][col] == 0:\n            return r\ndef print_board(board):\n    print(np.flip(board, 0))\ndef winning_move(board, piece):\n    # Check horizontal locations for win\n    for c in range(COLUMN_COUNT - 3):\n        for r in range(ROW_COUNT):",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "print_board",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def print_board(board):\n    print(np.flip(board, 0))\ndef winning_move(board, piece):\n    # Check horizontal locations for win\n    for c in range(COLUMN_COUNT - 3):\n        for r in range(ROW_COUNT):\n            if (\n                board[r][c] == piece\n                and board[r][c + 1] == piece\n                and board[r][c + 2] == piece",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "winning_move",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def winning_move(board, piece):\n    # Check horizontal locations for win\n    for c in range(COLUMN_COUNT - 3):\n        for r in range(ROW_COUNT):\n            if (\n                board[r][c] == piece\n                and board[r][c + 1] == piece\n                and board[r][c + 2] == piece\n                and board[r][c + 3] == piece\n            ):",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "evaluate_window",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def evaluate_window(window, piece):\n    score = 0\n    opp_piece = PLAYER_PIECE\n    if piece == PLAYER_PIECE:\n        opp_piece = AI_PIECE\n    if window.count(piece) == 4:\n        score += 100\n    elif window.count(piece) == 3 and window.count(EMPTY) == 1:\n        score += 5\n    elif window.count(piece) == 2 and window.count(EMPTY) == 2:",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "score_position",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def score_position(board, piece):\n    score = 0\n    ## Score center column\n    center_array = [int(i) for i in list(board[:, COLUMN_COUNT // 2])]\n    center_count = center_array.count(piece)\n    score += center_count * 3\n    ## Score Horizontal\n    for r in range(ROW_COUNT):\n        row_array = [int(i) for i in list(board[r, :])]\n        for c in range(COLUMN_COUNT - 3):",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "is_terminal_node",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def is_terminal_node(board):\n    return (\n        winning_move(board, PLAYER_PIECE)\n        or winning_move(board, AI_PIECE)\n        or len(get_valid_locations(board)) == 0\n    )\ndef minimax(board, depth, alpha, beta, maximizingPlayer):\n    valid_locations = get_valid_locations(board)\n    is_terminal = is_terminal_node(board)\n    if depth == 0 or is_terminal:",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "minimax",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def minimax(board, depth, alpha, beta, maximizingPlayer):\n    valid_locations = get_valid_locations(board)\n    is_terminal = is_terminal_node(board)\n    if depth == 0 or is_terminal:\n        if is_terminal:\n            if winning_move(board, AI_PIECE):\n                return (None, 100000000000000)\n            elif winning_move(board, PLAYER_PIECE):\n                return (None, -10000000000000)\n            else:  # Game is over, no more valid moves",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "get_valid_locations",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def get_valid_locations(board):\n    valid_locations = []\n    for col in range(COLUMN_COUNT):\n        if is_valid_location(board, col):\n            valid_locations.append(col)\n    return valid_locations\ndef pick_best_move(board, piece):\n    valid_locations = get_valid_locations(board)\n    best_score = -10000\n    best_col = random.choice(valid_locations)",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "pick_best_move",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def pick_best_move(board, piece):\n    valid_locations = get_valid_locations(board)\n    best_score = -10000\n    best_col = random.choice(valid_locations)\n    for col in valid_locations:\n        row = get_next_open_row(board, col)\n        temp_board = board.copy()\n        drop_piece(temp_board, row, col, piece)\n        score = score_position(temp_board, piece)\n        if score > best_score:",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "draw_board",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def draw_board(board, screen):\n    for c in range(COLUMN_COUNT):\n        for r in range(ROW_COUNT):\n            pygame.draw.rect(\n                screen,\n                BLUE,\n                (c * SQUARESIZE, r * SQUARESIZE + SQUARESIZE, SQUARESIZE, SQUARESIZE),\n            )\n            pygame.draw.circle(\n                screen,",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "wrap_text",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def wrap_text(text, font, max_width):\n    words = text.split(\" \")\n    lines = []\n    current_line = words[0]\n    for word in words[1:]:\n        if font.size(current_line + \" \" + word)[0] < max_width:\n            current_line += \" \" + word\n        else:\n            lines.append(current_line)\n            current_line = word",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "menu_screen",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def menu_screen(screen):\n    menu_font = pygame.font.SysFont(\"monospace\", 30)\n    credits_font = pygame.font.SysFont(\"monospace\", 20)\n    level_texts = [\"Easy\", \"Medium\", \"Hard\"]\n    selected_level = 0\n    while True:\n        screen.fill(WHITE)\n        title_label = menu_font.render(\"Connect 4\", 1, BLACK)\n        screen.blit(title_label, (width // 2 - title_label.get_width() // 2, 100))\n        for i, level_text in enumerate(level_texts):",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "def main():\n    board = create_board()\n    print_board(board)\n    game_over = False\n    pygame.init()\n    pygame.display.set_caption(\"Connect 4 AI Game For CP468\")\n    screen = pygame.display.set_mode(size)\n    selected_level = menu_screen(screen)\n    print(f\"selected level:{selected_level}\")\n    draw_board(board, screen)",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "BLUE",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "BLUE = (0, 0, 255)\nBLACK = (0, 0, 0)\nRED = (255, 0, 0)\nYELLOW = (255, 255, 0)\nWHITE = (255, 255, 255)\nROW_COUNT = 6\nCOLUMN_COUNT = 7\nPLAYER = 0\nAI = 1\nEMPTY = 0",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "BLACK",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "BLACK = (0, 0, 0)\nRED = (255, 0, 0)\nYELLOW = (255, 255, 0)\nWHITE = (255, 255, 255)\nROW_COUNT = 6\nCOLUMN_COUNT = 7\nPLAYER = 0\nAI = 1\nEMPTY = 0\nPLAYER_PIECE = 1",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "RED",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "RED = (255, 0, 0)\nYELLOW = (255, 255, 0)\nWHITE = (255, 255, 255)\nROW_COUNT = 6\nCOLUMN_COUNT = 7\nPLAYER = 0\nAI = 1\nEMPTY = 0\nPLAYER_PIECE = 1\nAI_PIECE = 2",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "YELLOW",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "YELLOW = (255, 255, 0)\nWHITE = (255, 255, 255)\nROW_COUNT = 6\nCOLUMN_COUNT = 7\nPLAYER = 0\nAI = 1\nEMPTY = 0\nPLAYER_PIECE = 1\nAI_PIECE = 2\nWINDOW_LENGTH = 4",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "WHITE",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "WHITE = (255, 255, 255)\nROW_COUNT = 6\nCOLUMN_COUNT = 7\nPLAYER = 0\nAI = 1\nEMPTY = 0\nPLAYER_PIECE = 1\nAI_PIECE = 2\nWINDOW_LENGTH = 4\nSQUARESIZE = 100",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "ROW_COUNT",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "ROW_COUNT = 6\nCOLUMN_COUNT = 7\nPLAYER = 0\nAI = 1\nEMPTY = 0\nPLAYER_PIECE = 1\nAI_PIECE = 2\nWINDOW_LENGTH = 4\nSQUARESIZE = 100\nwidth = COLUMN_COUNT * SQUARESIZE",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "COLUMN_COUNT",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "COLUMN_COUNT = 7\nPLAYER = 0\nAI = 1\nEMPTY = 0\nPLAYER_PIECE = 1\nAI_PIECE = 2\nWINDOW_LENGTH = 4\nSQUARESIZE = 100\nwidth = COLUMN_COUNT * SQUARESIZE\nheight = (ROW_COUNT + 1) * SQUARESIZE",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "PLAYER",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "PLAYER = 0\nAI = 1\nEMPTY = 0\nPLAYER_PIECE = 1\nAI_PIECE = 2\nWINDOW_LENGTH = 4\nSQUARESIZE = 100\nwidth = COLUMN_COUNT * SQUARESIZE\nheight = (ROW_COUNT + 1) * SQUARESIZE\nsize = (width, height)",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "AI",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "AI = 1\nEMPTY = 0\nPLAYER_PIECE = 1\nAI_PIECE = 2\nWINDOW_LENGTH = 4\nSQUARESIZE = 100\nwidth = COLUMN_COUNT * SQUARESIZE\nheight = (ROW_COUNT + 1) * SQUARESIZE\nsize = (width, height)\nRADIUS = int(SQUARESIZE / 2 - 5)",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "EMPTY",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "EMPTY = 0\nPLAYER_PIECE = 1\nAI_PIECE = 2\nWINDOW_LENGTH = 4\nSQUARESIZE = 100\nwidth = COLUMN_COUNT * SQUARESIZE\nheight = (ROW_COUNT + 1) * SQUARESIZE\nsize = (width, height)\nRADIUS = int(SQUARESIZE / 2 - 5)\ndef create_board():",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "PLAYER_PIECE",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "PLAYER_PIECE = 1\nAI_PIECE = 2\nWINDOW_LENGTH = 4\nSQUARESIZE = 100\nwidth = COLUMN_COUNT * SQUARESIZE\nheight = (ROW_COUNT + 1) * SQUARESIZE\nsize = (width, height)\nRADIUS = int(SQUARESIZE / 2 - 5)\ndef create_board():\n    board = np.zeros((ROW_COUNT, COLUMN_COUNT))",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "AI_PIECE",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "AI_PIECE = 2\nWINDOW_LENGTH = 4\nSQUARESIZE = 100\nwidth = COLUMN_COUNT * SQUARESIZE\nheight = (ROW_COUNT + 1) * SQUARESIZE\nsize = (width, height)\nRADIUS = int(SQUARESIZE / 2 - 5)\ndef create_board():\n    board = np.zeros((ROW_COUNT, COLUMN_COUNT))\n    return board",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "WINDOW_LENGTH",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "WINDOW_LENGTH = 4\nSQUARESIZE = 100\nwidth = COLUMN_COUNT * SQUARESIZE\nheight = (ROW_COUNT + 1) * SQUARESIZE\nsize = (width, height)\nRADIUS = int(SQUARESIZE / 2 - 5)\ndef create_board():\n    board = np.zeros((ROW_COUNT, COLUMN_COUNT))\n    return board\ndef drop_piece(board, row, col, piece):",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "SQUARESIZE",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "SQUARESIZE = 100\nwidth = COLUMN_COUNT * SQUARESIZE\nheight = (ROW_COUNT + 1) * SQUARESIZE\nsize = (width, height)\nRADIUS = int(SQUARESIZE / 2 - 5)\ndef create_board():\n    board = np.zeros((ROW_COUNT, COLUMN_COUNT))\n    return board\ndef drop_piece(board, row, col, piece):\n    board[row][col] = piece",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "width",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "width = COLUMN_COUNT * SQUARESIZE\nheight = (ROW_COUNT + 1) * SQUARESIZE\nsize = (width, height)\nRADIUS = int(SQUARESIZE / 2 - 5)\ndef create_board():\n    board = np.zeros((ROW_COUNT, COLUMN_COUNT))\n    return board\ndef drop_piece(board, row, col, piece):\n    board[row][col] = piece\ndef is_valid_location(board, col):",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "height",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "height = (ROW_COUNT + 1) * SQUARESIZE\nsize = (width, height)\nRADIUS = int(SQUARESIZE / 2 - 5)\ndef create_board():\n    board = np.zeros((ROW_COUNT, COLUMN_COUNT))\n    return board\ndef drop_piece(board, row, col, piece):\n    board[row][col] = piece\ndef is_valid_location(board, col):\n    return board[ROW_COUNT - 1][col] == 0",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "size",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "size = (width, height)\nRADIUS = int(SQUARESIZE / 2 - 5)\ndef create_board():\n    board = np.zeros((ROW_COUNT, COLUMN_COUNT))\n    return board\ndef drop_piece(board, row, col, piece):\n    board[row][col] = piece\ndef is_valid_location(board, col):\n    return board[ROW_COUNT - 1][col] == 0\ndef get_next_open_row(board, col):",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    },
+    {
+        "label": "RADIUS",
+        "kind": 5,
+        "importPath": "connect4_with_ai",
+        "description": "connect4_with_ai",
+        "peekOfCode": "RADIUS = int(SQUARESIZE / 2 - 5)\ndef create_board():\n    board = np.zeros((ROW_COUNT, COLUMN_COUNT))\n    return board\ndef drop_piece(board, row, col, piece):\n    board[row][col] = piece\ndef is_valid_location(board, col):\n    return board[ROW_COUNT - 1][col] == 0\ndef get_next_open_row(board, col):\n    for r in range(ROW_COUNT):",
+        "detail": "connect4_with_ai",
+        "documentation": {}
+    }
+]
